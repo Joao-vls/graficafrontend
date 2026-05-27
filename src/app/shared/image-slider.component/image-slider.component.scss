@@ -1,0 +1,117 @@
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3rem; // Espaço para os pontinhos inferiores
+}
+
+.slider-viewport {
+  width: 100%;
+  overflow: hidden; // Esconde os slides que estão fora de foco
+  border-radius: 24px;
+}
+
+.slider-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease-in-out; // Transição suave ao mudar de slide
+}
+
+.slide-item {
+  min-width: 100%; // Cada slide ocupa exatamente toda a largura da viewport
+  box-sizing: border-box;
+  padding: 0 0.5rem; // Espaçamento interno opcional
+}
+
+.card-wrapper {
+  width: 100%;
+  height: 450px; // Altura confortável para exibição das fotos das fachadas
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  background-color: #f0f0f0;
+
+  @media (max-width: 768px) {
+    height: 280px; // Reduz a altura em telas menores
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Garante o preenchimento proporcional da imagem
+  }
+}
+
+// Botões de navegação (Setas em Azul Cyan)
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #00aeef; // Tom azul cyan idêntico ao das setas de produto
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, background-color 0.2s;
+
+  &:hover {
+    transform: translateY(-50%) scale(1.1);
+    background-color: darken(#00aeef, 5%);
+  }
+
+  &.prev {
+    left: -25px; // Flutua metade para fora do container na esquerda
+    @media (max-width: 600px) { left: 10px; }
+  }
+
+  &.next {
+    right: -25px; // Flutua metade para fora do container na direita
+    @media (max-width: 600px) { right: 10px; }
+  }
+
+  .arrow {
+    font-size: 2.2rem;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: -4px; // Ajuste fino de alinhamento do caractere
+  }
+}
+
+// Os pontinhos sinalizadores (Dots) abaixo do carrossel
+.slider-dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.6rem;
+
+  .dot {
+    width: 35px; // Formato de pílula retangular arredondada igual ao design
+    height: 8px;
+    background-color: rgba(#000000, 0.2);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+
+    &.active {
+      background-color: #e6007e; // Destaca em magenta ou branco dependendo da seção de fundo
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    &:hover {
+      transform: scaleY(1.2);
+    }
+  }
+}

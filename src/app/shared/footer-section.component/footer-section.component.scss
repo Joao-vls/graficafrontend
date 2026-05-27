@@ -1,0 +1,144 @@
+.footer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+}
+
+// Bloco Azul "Quem Somos"
+.about-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #00aeef; // Azul característico do layout
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; // Evita estouro das imagens de tinta nas laterais
+  box-sizing: border-box;
+}
+
+// Tratamento Inteligente das Imagens das Bordas
+.decor-side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 180px; // Ajuste baseado no tamanho da sua imagem de tinta
+  height: 100%;
+  z-index: 1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &.left-side {
+    left: 0;
+  }
+
+  &.right-side {
+    right: 0;
+    transform: scaleX(-1); // Inverte horizontalmente a mesma imagem
+  }
+
+  // Esconde ou diminui em telas pequenas para não cobrir o texto
+  @media (max-width: 768px) {
+    width: 80px;
+  }
+  @media (max-width: 480px) {
+    display: none; // Remove em telas muito estreitas para focar na leitura
+  }
+}
+
+// Conteúdo central institucional
+.about-content {
+  max-width: 800px;
+  text-align: center;
+  color: #ffffff;
+  z-index: 2; // Fica por cima do fundo e das bordas se necessário
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  .about-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+
+  .about-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 1rem;
+  }
+
+  .footer-logo {
+    width: 220px;
+    margin-top: 1rem;
+    
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+// Bloco Inferior Técnico (Dark)
+.legal-wrapper {
+  background-color: #0b141e; // Grafite escuro / Preto do formulário
+  color: #94a3b8;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-size: 0.85rem;
+  border-top: 3px solid #131722; // Linha sutil de divisão superior
+
+  .privacy-notice {
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+
+    a {
+      color: #94a3b8;
+      text-decoration: underline;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #00aeef;
+      }
+    }
+  }
+
+  .company-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; // Quebra linha em celulares automaticamente
+    gap: 0.5rem;
+    line-height: 1.5;
+    font-weight: 400;
+
+    .divider {
+      color: #555555;
+      padding: 0 0.2rem;
+      
+      @media (max-width: 768px) {
+        display: none; // Remove as bolinhas separadoras no mobile para quebrar melhor
+      }
+    }
+
+    span {
+      @media (max-width: 768px) {
+        width: 100%; // Cada informação vira uma linha separada no celular
+        display: block;
+      }
+    }
+  }
+}

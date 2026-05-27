@@ -1,0 +1,120 @@
+.services-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: transparent; // Sem cor de fundo fixa! A imagem final do Canvas preencherá tudo.
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 4rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.services-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.services-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  
+  .section-title {
+    color: #ffffff; // Cor branca para contrastar quando o fundo surgir
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 4rem;
+    align-self: flex-start; // Alinhado estritamente à esquerda
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 3rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  .card-circle {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00bdf2 0%, #0076a8 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+
+    img {
+      width: 80%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  .card-label {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 30px;
+    width: 90%;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+.btn-wrapper {
+  justify-content: center;
+}
+
+.btn-mais-servicos {
+  background-color: #e6007e; // Rosa/Magenta idêntico ao botão da imagem
+  color: #ffffff;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(230, 0, 126, 0.4);
+  transition: transform 0.2s ease;
+  font-family: 'Montserrat', sans-serif;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

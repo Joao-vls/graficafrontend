@@ -1,0 +1,88 @@
+.clients-container {
+  width: 100%;
+  background-color: #ffffff; // Fundo inteiramente limpo e branco
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; // Esconde as logos que saem da tela nas laterais
+  font-family: 'Montserrat', sans-serif;
+}
+
+.clients-title {
+  color: #131722;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+// O wrapper define a largura total da tela e corta o transbordo
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  ); // Cria um efeito suave de esmaecimento nas bordas da tela
+}
+
+// A esteira física que segura os dois grupos
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-marquee 25s linear infinite; // Controla a velocidade (25 segundos por volta completa)
+
+  // Opcional: Se o usuário passar o mouse por cima, a esteira para devagar para melhor visualização
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+// Cada bloco contendo o conjunto padrão de marcas
+.marquee-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4rem; // Espaçamento generoso entre as logos
+  padding-right: 4rem; // Garante o mesmo espaçamento na emenda entre o grupo 1 e o grupo 2
+  min-width: 100%;
+}
+
+// Elemento individual da logo
+.client-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px; // Largura adaptável para a proporção das suas imagens
+  height: auto;
+  transition: transform 0.3s ease;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &:hover {
+    transform: scale(1.05); // Leve destaque ao passar o mouse
+  }
+}
+
+// Configuração matemática da animação contínua
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); // Move exatamente a largura de um bloco completo antes de resetar instantaneamente
+  }
+}

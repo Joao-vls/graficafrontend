@@ -1,0 +1,65 @@
+<section class="order-container">
+  <div class="order-content-card">
+    
+    <div class="promo-column">
+      <div class="promo-text-wrapper">
+        <h3 class="promo-subtitle">PRIMEIRA COMPRA</h3>
+        <h2 class="promo-title">CADASTRA-SE</h2>
+        <p class="promo-highlight">E GANHE 15% DE DESCONTO</p>
+      </div>
+      
+      <button class="btn-cadastro">
+        CADASTRO ➔
+      </button>
+    </div>
+
+    <div class="form-column">
+      <h2 class="form-title">FORMULÁRIO DE PEDIDO</h2>
+      
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="form-body">
+        
+        <div class="input-group">
+          <label for="email">ENDEREÇO DE E-MAIL</label>
+          <input type="email" id="email" formControlName="email" autocomplete="off">
+        </div>
+
+        <div class="input-group">
+          <label for="phone">NÚMERO DE TELEFONE</label>
+          <input type="tel" id="phone" formControlName="phone" autocomplete="off">
+        </div>
+
+        <div class="input-group">
+          <label for="notes">OBSERVAÇÕES E DETALHES</label>
+          <textarea id="notes" formControlName="notes" rows="3"></textarea>
+        </div>
+
+        <div class="input-group">
+          <label>SEU PEDIDO</label>
+          <div class="product-tags-container">
+            <div class="product-tag">PRODUTO 1</div>
+            <div class="product-tag">PRODUTO 2</div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="quantity">QUANTIDADE</label>
+          <input type="number" id="quantity" formControlName="quantity">
+        </div>
+
+        <div class="input-group">
+          <label for="city">ENDEREÇO CIDADE</label>
+          <input type="text" id="city" formControlName="city" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn-submit" [disabled]="orderForm.invalid">
+          ENVIAR PEDIDO
+        </button>
+
+        <span class="form-disclaimer">
+          SEU NOME DE PERFIL NO CANVA NÃO SERÁ COMPARTILHADO. NUNCA ENVIE SENHAS.
+        </span>
+      </form>
+    </div>
+
+  </div>
+</section>

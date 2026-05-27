@@ -1,0 +1,138 @@
+.topbar-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: fixed; // Fixa o container na viewport de forma sobreposta
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  
+  // Transição física suave para esconder/mostrar subindo e descendo
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s linear;
+
+  // Quando o usuário desce a página: Move para fora da tela (Efeito Sumir)
+  &.nav-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none; // Desativa cliques enquanto invisível
+  }
+
+  // Quando o usuário volta para cima: Volta para a posição original (Efeito Aparecer)
+  &.nav-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// 1. Barra Promocional com corte diagonal nativo
+.alert-promo-bar {
+  position: relative;
+  width: 100%;
+  height: 35px;
+  background-color: #0b141e; // Azul escuro
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85%;
+    background-color: #f9d423; // Amarelo
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0% 100%);
+    z-index: 1;
+  }
+
+  .promo-text-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 0 1rem;
+  }
+}
+
+// 2. Barra Principal Branca
+.main-nav-bar {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  border-bottom: 3px solid #e6007e; // Linha magenta
+}
+
+.nav-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo h1 {
+  color: #0b141e;
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+
+  .contact-label {
+    color: #0b141e;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+}
+
+// Estilização precisa dos SVGs das redes sociais
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  .icon-link {
+    color: #000000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    .svg-icon {
+      width: 24px;  // Tamanho idêntico ao do layout da imagem
+      height: 24px;
+      fill: currentColor;
+    }
+
+    &:hover {
+      transform: scale(1.15);
+      
+      // Cores exatas ao passar o mouse por cima
+      &:nth-child(1) { color: #25d366; } // Verde WhatsApp
+      &:nth-child(2) { color: #00aeef; } // Azul Telefone
+      &:nth-child(3) { color: #e6007e; } // Magenta Instagram
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .main-nav-bar { padding: 0.8rem 1rem; }
+  .brand-logo h1 { font-size: 1.1rem; }
+}

@@ -1,0 +1,35 @@
+<div class="slider-container">
+  
+  <button class="slider-btn prev" (click)="prevSlide()" aria-label="Slide anterior">
+    <span class="arrow">‹</span>
+  </button>
+
+  <div class="slider-viewport">
+    <div class="slider-track" [style.transform]="'translateX(' + (-currentIndex * 100) + '%)'">
+      
+      @for (slide of slides; track $index) {
+        <div class="slide-item">
+          <div class="card-wrapper">
+            <img [src]="slide.image" [alt]="slide.alt || 'Imagem do portfólio'">
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+
+  <button class="slider-btn next" (click)="nextSlide()" aria-label="Próximo slide">
+    <span class="arrow">›</span>
+  </button>
+
+  <div class="slider-dots">
+    @for (slide of slides; track $index) {
+      <span 
+        class="dot" 
+        [class.active]="$index === currentIndex"
+        (click)="goToSlide($index)">
+      </span>
+    }
+  </div>
+
+</div>

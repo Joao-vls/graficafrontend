@@ -1,0 +1,54 @@
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; // Ocupa a tela inteira
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #fff; // Fundo base branco antes da tinta
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-left: 10%; // Alinha conteúdo à esquerda como na imagem
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 500px;
+
+  .logo-box {
+    img.logo {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .btn-orcamento {
+    background-color: #ec008c; // Rosa/Magenta da logo
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(236, 0, 140, 0.3);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

@@ -1,0 +1,207 @@
+.order-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f9fa; // Fundo sutil atrás do card principal
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+}
+
+.order-content-card {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr; // Divisão proporcional exata das duas colunas
+  width: 100%;
+  max-width: 1100px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  @media (max-width: 850px) {
+    grid-template-columns: 1fr; // Vira uma coluna única em telas de celular
+  }
+}
+
+// Estilização da metade escura (Promo)
+.promo-column {
+  background-color: #0b141e; // O azul escuro/preto idêntico ao layout
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+
+  @media (max-width: 850px) {
+    gap: 3rem;
+    padding: 3rem 2rem;
+  }
+
+  .promo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .promo-subtitle {
+    color: #00aeef; // Azul cyan destacado
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  .promo-title {
+    color: #e6007e; // Magenta vibrante
+    font-size: 2.4rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin: 0;
+  }
+
+  .promo-highlight {
+    color: #f9d423; // Amarelo ouro
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .btn-cadastro {
+    background-color: #e6007e;
+    color: #ffffff;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 80%;
+    transition: transform 0.2s;
+    font-family: 'Montserrat', sans-serif;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Estilização da metade clara (Formulário)
+.form-column {
+  padding: 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+
+  @media (max-width: 600px) {
+    padding: 3rem 1.5rem;
+  }
+
+  .form-title {
+    color: #555555;
+    font-size: 1.6rem;
+    font-weight: 400; // Visual mais limpo e fino para o título do form
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      color: #333333;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      border: 1px solid #cccccc;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      color: #333333;
+      background-color: #ffffff;
+      box-sizing: border-box;
+      outline: none;
+      font-family: 'Montserrat', sans-serif;
+      transition: border-color 0.2s;
+
+      &:focus {
+        border-color: #e6007e; // Borda fica magenta ao focar
+      }
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+
+  // Caixa cinza interna simulando a seleção de produtos do layout
+  .product-tags-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .product-tag {
+      background-color: #e2e2e2;
+      color: #666666;
+      font-size: 0.85rem;
+      font-style: italic;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .btn-submit {
+    background-color: #e6007e;
+    color: #ffffff;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: darke(#e6007e, 5%);
+    }
+
+    &:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  }
+
+  .form-disclaimer {
+    color: #999999;
+    font-size: 0.55rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    letter-spacing: 0.2px;
+  }
+}
