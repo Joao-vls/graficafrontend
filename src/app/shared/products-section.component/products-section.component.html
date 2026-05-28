@@ -1,67 +1,89 @@
 <section class="products-container">
+
   <canvas #productsCanvas class="products-bg"></canvas>
 
   <div class="products-content">
-    <h2 class="products-title">PRODUTOS</h2>
+
+    <h2 class="products-title">
+      PRODUTOS
+    </h2>
 
     <div class="carousel-wrapper">
-      <button class="carousel-btn prev-btn" aria-label="Anterior">
+
+      <!-- BOTÃO ESQUERDA -->
+      <button
+        class="carousel-btn prev-btn"
+        aria-label="Anterior"
+        (click)="scrollPrev()"
+      >
         <span class="arrow-icon">‹</span>
       </button>
 
-      <div class="products-grid">
-        <div class="product-card">
-          <div class="image-box">
-            <img src="assets/produtos/carimbo-madeira.png" alt="Carimbo de Madeira">
-          </div>
-          <div class="card-footer">
-            <div class="info-meta">
-              <span class="product-name">CARIMBO</span>
-              <span class="product-brand">MARCA</span>
-            </div>
-            <div class="badge-action">
-              <span class="badge-text">4 CORES</span>
-              <div class="arrow-circle">➔</div>
-            </div>
-          </div>
-        </div>
+      <!-- TRACK -->
+      <div
+        #track
+        class="products-track"
+        (scroll)="onScroll()"
+      >
 
-        <div class="product-card">
-          <div class="image-box">
-            <img src="assets/produtos/carimbo-automatico.png" alt="Carimbo Automático">
-          </div>
-          <div class="card-footer">
-            <div class="info-meta">
-              <span class="product-name">CARIMBO</span>
-              <span class="product-brand">MARCA</span>
-            </div>
-            <div class="badge-action">
-              <span class="badge-text">4 CORES</span>
-              <div class="arrow-circle">➔</div>
-            </div>
-          </div>
-        </div>
+        @for (product of displayProducts; track $index) {
 
-        <div class="product-card">
-          <div class="image-box">
-            <img src="assets/produtos/resma.png" alt="Resma de Papel">
-          </div>
-          <div class="card-footer">
-            <div class="info-meta">
-              <span class="product-name">RESMA</span>
-              <span class="product-brand">MARCA</span>
+          <div class="product-card">
+
+            <div class="image-box">
+
+              <img
+                [src]="product.image"
+                [alt]="product.name"
+                draggable="false"
+              />
+
             </div>
-            <div class="badge-action">
-              <span class="badge-text">4 TAMANHOS</span>
-              <div class="arrow-circle">➔</div>
+
+            <div class="card-footer">
+
+              <div class="info-meta">
+
+                <span class="product-name">
+                  {{ product.name }}
+                </span>
+
+                <span class="product-brand">
+                  {{ product.brand }}
+                </span>
+
+              </div>
+
+              <div class="badge-action">
+
+                <span class="badge-text">
+                  {{ product.badge }}
+                </span>
+
+                <div class="arrow-circle">
+                  ➔
+                </div>
+
+              </div>
+
             </div>
+
           </div>
-        </div>
+        }
+
       </div>
 
-      <button class="carousel-btn next-btn" aria-label="Próximo">
+      <!-- BOTÃO DIREITA -->
+      <button
+        class="carousel-btn next-btn"
+        aria-label="Próximo"
+        (click)="scrollNext()"
+      >
         <span class="arrow-icon">›</span>
       </button>
+
     </div>
+
   </div>
+
 </section>

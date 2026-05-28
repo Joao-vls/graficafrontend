@@ -16,9 +16,9 @@ interface SlideItem {
 export class ImageSliderComponent {
   // Recebe a lista de imagens dinamicamente de onde o componente for chamado
   @Input() slides: SlideItem[] = [
-    { image: 'assets/portfolio/fachada1.jpg', alt: 'Wine & Liquor Mart' },
-    { image: 'assets/portfolio/fachada2.jpg', alt: 'Letras Caixa Wood' },
-    { image: 'assets/portfolio/fachada3.jpg', alt: 'Letreiro Luminoso Wine' }
+    { image: 'assets/banners/adesivo.jpg', alt: 'adesivo' },
+    { image: 'assets/banners/design.jpg', alt: 'design' },
+    { image: 'assets/banners/grafica.jpg', alt: 'grafica' }
   ];
 
   currentIndex = 0;

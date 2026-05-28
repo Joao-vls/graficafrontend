@@ -1,13 +1,22 @@
+:host {
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .products-container {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: transparent; // Fundo preenchido puramente pelo frame do canvas final
+
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6rem 1.5rem;
+
   overflow: hidden;
+
+  padding: 6rem 0;
+
   box-sizing: border-box;
 }
 
@@ -15,157 +24,280 @@
   position: absolute;
   top: 0;
   left: 0;
+
   width: 100%;
   height: 100%;
+
   z-index: 1;
+
   pointer-events: none;
 }
 
 .products-content {
   position: relative;
   z-index: 2;
+
   width: 100%;
-  max-width: 1240px;
+  max-width: 1320px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   font-family: 'Montserrat', sans-serif;
 
-  .products-title {
-    color: #ffffff;
-    font-size: 3.5rem;
-    font-weight: 900;
-    margin-bottom: 4rem;
-    letter-spacing: -1px;
-    text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+.products-title {
+  color: #ffffff;
+
+  font-size: 3.5rem;
+  font-weight: 900;
+
+  margin-bottom: 4rem;
+
+  letter-spacing: -1px;
+
+  text-transform: uppercase;
+
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 2.3rem;
+    margin-bottom: 2.5rem;
+    padding-inline: 1rem;
   }
 }
 
-// Estrutura do Carrossel com as Setas Laterais
 .carousel-wrapper {
   position: relative;
+
   width: 100%;
+
   display: flex;
   align-items: center;
-  gap: 1rem;
+
+  overflow: hidden;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+.products-track {
   width: 100%;
 
-  @media (max-width: 992px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (max-width: 650px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Customização idêntica dos Cards de Itens
-.product-card {
-  background-color: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: column;
-  height: 380px;
 
-  .image-box {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    background-color: #ffffff;
+  gap: 1.2rem;
 
-    img {
-      max-width: 90%;
-      max-height: 200px;
-      object-fit: contain;
-    }
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+
+  padding: .5rem 1rem;
+
+  box-sizing: border-box;
+
+  -webkit-overflow-scrolling: touch;
+
+  touch-action: pan-x;
+
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 
-  // Rodapé dividido em metades com cores diferentes
-  .card-footer {
-    display: flex;
-    height: 70px;
-    width: 100%;
-  }
-
-  .info-meta {
-    flex: 1.2;
-    background-color: #0b141e; // Fundo azul escuro/preto da imagem
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 1.2rem;
-
-    .product-name {
-      font-size: 1.1rem;
-      font-weight: 900;
-      letter-spacing: 0.5px;
-    }
-    
-    .product-brand {
-      font-size: 0.75rem;
-      font-weight: 500;
-      opacity: 0.7;
-    }
-  }
-
-  .badge-action {
-    flex: 1;
-    background-color: #f9d423; // Amarelo característico do rodapé do card
-    color: #000000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-    font-weight: 800;
-    font-size: 0.85rem;
-
-    .arrow-circle {
-      width: 32px;
-      height: 32px;
-      border: 2px solid #000000;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1rem;
-    }
+  @media (max-width: 768px) {
+    padding-inline: .8rem;
   }
 }
 
-// Estilização das Setas Flutuantes do Slide
-.carousel-btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  background-color: #00aeef; // Azul Cyan das setas
-  color: #ffffff;
+.product-card {
+  flex: 0 0 auto;
+
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  scroll-snap-align: center;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.22);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+
+  @media (max-width: 768px) {
+
+    width: calc(100vw - 40px);
+
+    min-width: calc(100vw - 40px);
+
+    max-width: calc(100vw - 40px);
+  }
+}
+
+.image-box {
+  width: 100%;
+
+  height: 300px;
+
+  background: #ffffff;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+  padding: 2rem;
+
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    height: 240px;
+    padding: 1.5rem;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+  }
+}
+
+.card-footer {
+  width: 100%;
+  height: 82px;
+
+  display: flex;
+}
+
+.info-meta {
+  flex: 1.2;
+
+  background: #0d1620;
+
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-left: 1.2rem;
+
+  .product-name {
+    font-size: 1.1rem;
+    font-weight: 900;
+  }
+
+  .product-brand {
+    font-size: .72rem;
+    opacity: .7;
+    margin-top: .2rem;
+  }
+}
+
+.badge-action {
+  flex: 1;
+
+  background: #f4c623;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 1rem;
+
+  .badge-text {
+    font-size: .82rem;
+    font-weight: 900;
+    color: #000;
+  }
+
+  .arrow-circle {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    border: 2px solid #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    flex-shrink: 0;
+  }
+}
+
+.carousel-btn {
+  position: absolute;
+
   z-index: 10;
-  transition: transform 0.2s;
+
+  width: 58px;
+  height: 58px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #00b7ff;
+
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.2);
+
+  transition:
+    transform .25s ease;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
   }
 
   .arrow-icon {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.5rem;
     line-height: 1;
-    margin-top: -4px; // Ajuste fino do caractere
+    margin-top: -4px;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.prev-btn {
+  left: 14px;
+}
+
+.next-btn {
+  right: 14px;
 }

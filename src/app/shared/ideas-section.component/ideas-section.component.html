@@ -1,34 +1,55 @@
 <section class="ideas-container">
   <canvas #ideasCanvas class="ideas-bg"></canvas>
 
+  <div class="pink-shape"></div>
+
   <div class="ideas-content">
-    <h2 class="ideas-title">NÓS TEMOS AS MELHORES IDEIAS PARA VOCÊ!</h2>
-    
+
+    <div class="title-line"></div>
+
+    <h2 class="ideas-title">
+      NÓS TEMOS AS MELHORES IDEIAS PARA VOCÊ!
+    </h2>
+
     <p class="ideas-text">
-      TRABALHAMOS COM FOCO NOS NOSSOS CLIENTES, ORIENTADOS PARA A EXCELÊNCIA DOS NOSSOS 
-      PRODUTOS E SERVIÇOS. NOSSA MISSÃO É IMPACTAR E ENCANTAR PESSOAS, MULTIPLICANDO O ACESSO ÀS 
-      NOSSAS IDEIAS E PROMOVENDO INOVAÇÃO PARA OS NOSSOS CLIENTES (PESSOAS E ORGANIZAÇÕES).
+      TRABALHAMOS COM FOCO NOS NOSSOS CLIENTES, ORIENTADOS PARA A EXCELÊNCIA
+      DOS NOSSOS PRODUTOS E SERVIÇOS. NOSSA MISSÃO É IMPACTAR E ENCANTAR
+      PESSOAS, MULTIPLICANDO O ACESSO ÀS NOSSAS IDEIAS E PROMOVENDO
+      INOVAÇÃO PARA OS NOSSOS CLIENTES (PESSOAS E ORGANIZAÇÕES).
     </p>
 
     <div class="ideas-slider">
-      <div class="slider-track">
-        <div class="slide-card font-size-fix">
-          <img src="assets/portfolio/fachada1.jpg" alt="Wine & Liquor Mart">
-        </div>
-        <div class="slide-card">
-          <img src="assets/portfolio/fachada2.jpg" alt="Letras Caixa Wood">
-        </div>
-        <div class="slide-card">
-          <img src="assets/portfolio/fachada3.jpg" alt="Letreiro Luminoso Wine">
-        </div>
+
+      <div
+        class="slider-track"
+        [style.transform]="'translateX(-' + currentSlide * slideWidth + 'px)'"
+      >
+
+        @for (item of slides; track item.image) {
+          <div class="slide-card">
+            <img
+              [src]="item.image"
+              [alt]="item.alt"
+              draggable="false"
+            />
+          </div>
+        }
+
       </div>
-      
+
       <div class="slider-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+
+        @for (dot of slides; track $index) {
+          <span
+            class="dot"
+            [class.active]="$index === activeDot"
+            (click)="goToSlide($index)">
+          </span>
+        }
+
       </div>
+
     </div>
+
   </div>
 </section>
